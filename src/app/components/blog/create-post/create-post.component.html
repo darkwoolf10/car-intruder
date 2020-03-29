@@ -1,0 +1,27 @@
+<div class="content">
+  <form class="create-post-form">
+    <mat-form-field class="create-post-form__field">
+      <mat-label class="create-post-form__label">Title</mat-label>
+      <input matInput placeholder="Type title...">
+    </mat-form-field>
+
+    <mat-form-field class="create-post-form__field create-post-form__content">
+      <mat-label>Content</mat-label>
+      <textarea matInput placeholder="Type content..."></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="create-post-form__field">
+      <ngx-mat-file-input></ngx-mat-file-input>
+      <mat-icon class="create-post-form__icon" aria-hidden="false" aria-label="Library icon...">library_add</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="create-post-form__field">
+      <mat-label>Change category</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let category of categories" [value]="category.name">
+          {{ category.title }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
