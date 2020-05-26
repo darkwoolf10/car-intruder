@@ -4,19 +4,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  imports: [
-    MatToolbarModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MaterialFileInputModule
-  ],
   exports: [
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
-    MaterialFileInputModule
+    MaterialFileInputModule,
+    MatButtonModule
   ],
 })
 export class AppMaterialModule { }

@@ -2,12 +2,12 @@
   <form class="create-post-form">
     <mat-form-field class="create-post-form__field">
       <mat-label class="create-post-form__label">Title</mat-label>
-      <input matInput placeholder="Type title...">
+      <input [(ngModel)]="title" name="title" matInput placeholder="Type title...">
     </mat-form-field>
 
     <mat-form-field class="create-post-form__field create-post-form__content">
       <mat-label>Content</mat-label>
-      <textarea matInput placeholder="Type content..."></textarea>
+      <textarea [(ngModel)]="content" name="content" matInput placeholder="Type content..."></textarea>
     </mat-form-field>
 
     <mat-form-field class="create-post-form__field">
@@ -15,13 +15,37 @@
       <mat-icon class="create-post-form__icon" aria-hidden="false" aria-label="Library icon...">library_add</mat-icon>
     </mat-form-field>
 
-    <mat-form-field class="create-post-form__field">
-      <mat-label>Change category</mat-label>
-      <mat-select>
+    <agm-map
+      [latitude]="lat"
+      [longitude]="lng"
+      [zoom]="2"
+      (mapClick)="addMarker($event.coords.lat, $event.coords.lng)"
+    >
+      <agm-marker
+        [latitude]="marker.lat"
+        [longitude]="marker.lng"
+        [opacity]="marker.alpha"
+        [markerDraggable]="true"
+      >
+      </agm-marker>
+    </agm-map>
+
+    <mat-form-field class="create-post-form__field category">
+      <mat-label>Choose category</mat-label>
+      <mat-select [(ngModel)]="selectedCategory" name="categories">
         <mat-option *ngFor="let category of categories" [value]="category.name">
           {{ category.title }}
         </mat-option>
       </mat-select>
     </mat-form-field>
+
+    <button mat-raised-button
+            type="button"
+            color="primary"
+            class="create-post-form__field"
+            (click)="sendPost()"
+    >
+      Send
+    </button>
   </form>
 </div>
