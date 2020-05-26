@@ -1,6 +1,7 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-
-declare var ol: any;
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { CategoryService } from '../../../services/api/category.service';
+import { PostService } from '../../../services/api/post.service';
+import {Post} from '../../../models/Post';
 
 @Component({
   selector: 'app-create-post',
@@ -8,43 +9,36 @@ declare var ol: any;
   styleUrls: ['./create-post.component.sass']
 })
 
-export class CreatePostComponent implements OnInit {
-
-  @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
-
-  map: google.maps.Map;
-
-  lat = 40.730610;
-  lng = -73.935242;
-
-  coordinates = new google.maps.LatLng(this.lat, this.lng);
-
-  mapOptions: google.maps.MapOptions = {
-    center: this.coordinates,
-    zoom: 8,
-  };
-
-  marker = new google.maps.Marker({
-    position: this.coordinates,
-    map: this.map,
-  });
-
+export class CreatePostComponent {
+  constructor(private postService: PostService) { }
+  title: string;
+  content: string;
+  selectedCategory: string;
   categories = [
     {name: 'crash', title: 'Crash'},
     {name: 'auto_violation', title: 'Auto violation'}
   ] as const;
 
-  // tslint:disable-next-line:use-lifecycle-interface
-  ngAfterViewInit() {
-    this.mapInitializer();
+  lat = 43.879078;
+  lng = -103.4615581;
+  marker = {lat: 43.879078, lng: -103.4615581, alpha: 0.4};
+
+  addMarker(lat: number, lng: number) {
+    this.marker = {lat, lng, alpha: 0.4};
   }
 
-  mapInitializer() {
-    this.map = new google.maps.Map(this.gmap.nativeElement,
-      this.mapOptions);
-    this.marker.setMap(this.map);
-  }
+  sendPost() {
+    const post: Post = {
+      title: this.title,
+      content: this.content,
+      fileName: 'file',
+      lat: this.marker.lat,
+      lng: this.marker.lng,
+      categories: this.selectedCategory
+    };
 
-  ngOnInit(): void {
+    console.log(post);
+
+    // this.postService.createPost(post);
   }
 }

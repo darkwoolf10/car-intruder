@@ -7,5 +7,18 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  title = 'intruder';
+  public title = 'intruder';
+
+  public logoPath = 'assets/images/logo.png';
+
+  public headerLinks = [
+    {
+      title: 'Blog',
+      link: '/blog/list'
+    },
+    {
+      title: 'Create post',
+      link: '/blog/create-post'
+    }
+  ];
 }

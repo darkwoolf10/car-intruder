@@ -2,11 +2,18 @@
   <mat-toolbar class="header-content">
     <span class="header-title">
       <a routerLink="/">
-        <img class="header-logo" src="assets/images/logo.png" alt="Logo">
+        <img class="header-logo" src="{{ logoPath }}" alt="Logo">
       </a>
     </span>
     <nav class="header-links">
-      <a routerLink="/blog/create-post" routerLinkActive="active">Create post</a>
+      <ul class="header-list">
+        <li class="header-list__item" *ngFor="let link of headerLinks">
+          <a class="header-list__link"
+             mat-raised-button color="primary"
+             routerLink="{{ link.link }}"
+             routerLinkActive="active">{{ link.title }}</a>
+        </li>
+      </ul>
     </nav>
   </mat-toolbar>
 </header>
