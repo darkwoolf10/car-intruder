@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Post } from '../../../models/Post';
+import {environment} from '../../../../environments/environment.prod';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-list',
@@ -9,13 +9,13 @@ import { Post } from '../../../models/Post';
 })
 
 export class ListComponent implements OnInit {
-  public posts: Post;
+  public posts = [];
 
-  private postsLink = '';
-
-  constructor(private http: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get(this.postsLink).subscribe((data: Post) => this.posts = data);
+    this.httpClient.get<any>(environment.backendApi).subscribe(res => {
+      this.posts = res.articles;
+    });
   }
 }

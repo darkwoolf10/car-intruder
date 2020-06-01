@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { CategoryService } from '../../../services/api/category.service';
+import {Component, Inject} from '@angular/core';
 import { PostService } from '../../../services/api/post.service';
-import {Post} from '../../../models/Post';
+import { DOCUMENT } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-post',
@@ -10,7 +10,6 @@ import {Post} from '../../../models/Post';
 })
 
 export class CreatePostComponent {
-  constructor(private postService: PostService) { }
   title: string;
   content: string;
   selectedCategory: string;
@@ -18,27 +17,39 @@ export class CreatePostComponent {
     {name: 'crash', title: 'Crash'},
     {name: 'auto_violation', title: 'Auto violation'}
   ] as const;
-
+  public files: any[];
   lat = 43.879078;
   lng = -103.4615581;
   marker = {lat: 43.879078, lng: -103.4615581, alpha: 0.4};
+  constructor(private postService: PostService, @Inject(DOCUMENT) private document: Document, private router: Router) {
+    this.files = [];
+  }
+  onFileChanged(event: any) {
+    this.files = event.target.files;
+  }
 
   addMarker(lat: number, lng: number) {
     this.marker = {lat, lng, alpha: 0.4};
   }
 
   sendPost() {
-    const post: Post = {
-      title: this.title,
-      content: this.content,
-      fileName: 'file',
-      lat: this.marker.lat,
-      lng: this.marker.lng,
-      categories: this.selectedCategory
-    };
+    const data = new FormData();
 
-    console.log(post);
+    for (const file of this.files) {
+      data.append('photo', file, file.name);
+    }
 
-    // this.postService.createPost(post);
+    data.append('title', this.title);
+    data.append('description', this.content);
+    data.append('longitude', this.marker.lat.toString());
+    data.append('latitude', this.marker.lng.toString());
+    data.append('category', this.selectedCategory);
+
+    this.postService.createPost(data);
+    this.redirectToList();
+  }
+
+  redirectToList() {
+    this.document.location.href = location.origin + '/blog/list';
   }
 }

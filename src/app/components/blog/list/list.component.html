@@ -1,0 +1,15 @@
+<div class="posts-list">
+  <mat-card class="post" *ngFor="let post of posts">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{ post.title }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image class="post-image" [src]="post.image" alt="Photo">
+    <mat-card-content>
+      <p>{{ post.description }}</p>
+    </mat-card-content>
+    <mat-card-actions class="post-buttons">
+      <button color="primary" routerLink="/blog/{{ post.id }}" mat-raised-button>SHOW</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

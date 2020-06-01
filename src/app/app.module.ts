@@ -16,6 +16,8 @@ import { EditPostComponent } from './components/blog/edit-post/edit-post.compone
 import { StoreModule } from '@ngrx/store';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '../environments/environment.prod';
+import { MatCardModule } from '@angular/material/card';
+import { PostComponent } from './components/blog/post/post.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { environment } from '../environments/environment.prod';
     LoginComponent,
     RegistrationComponent,
     ListComponent,
-    EditPostComponent
+    EditPostComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { environment } from '../environments/environment.prod';
     StoreModule.forRoot({}, {}),
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsKey
-    })
+    }),
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

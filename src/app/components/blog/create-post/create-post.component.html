@@ -1,5 +1,5 @@
 <div class="content">
-  <form class="create-post-form">
+  <form class="create-post-form" enctype="multipart/form-data">
     <mat-form-field class="create-post-form__field">
       <mat-label class="create-post-form__label">Title</mat-label>
       <input [(ngModel)]="title" name="title" matInput placeholder="Type title...">
@@ -11,8 +11,11 @@
     </mat-form-field>
 
     <mat-form-field class="create-post-form__field">
-      <ngx-mat-file-input></ngx-mat-file-input>
-      <mat-icon class="create-post-form__icon" aria-hidden="false" aria-label="Library icon...">library_add</mat-icon>
+      <ngx-mat-file-input (change)="onFileChanged($event)"></ngx-mat-file-input>
+      <mat-icon class="create-post-form__icon"
+                aria-hidden="false"
+                aria-label="Library icon..."
+                >library_add</mat-icon>
     </mat-form-field>
 
     <agm-map
