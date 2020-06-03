@@ -18,6 +18,7 @@ import { AgmCoreModule } from '@agm/core';
 import { environment } from '../environments/environment.prod';
 import { MatCardModule } from '@angular/material/card';
 import { PostComponent } from './components/blog/post/post.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { PostComponent } from './components/blog/post/post.component';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AppMaterialModule,

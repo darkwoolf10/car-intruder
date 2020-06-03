@@ -9,7 +9,6 @@
       <mat-label>Content</mat-label>
       <textarea [(ngModel)]="content" name="content" matInput placeholder="Type content..."></textarea>
     </mat-form-field>
-
     <mat-form-field class="create-post-form__field">
       <ngx-mat-file-input (change)="onFileChanged($event)"></ngx-mat-file-input>
       <mat-icon class="create-post-form__icon"
@@ -17,11 +16,10 @@
                 aria-label="Library icon..."
                 >library_add</mat-icon>
     </mat-form-field>
-
     <agm-map
       [latitude]="lat"
       [longitude]="lng"
-      [zoom]="2"
+      [zoom]="9"
       (mapClick)="addMarker($event.coords.lat, $event.coords.lng)"
     >
       <agm-marker
@@ -32,7 +30,6 @@
       >
       </agm-marker>
     </agm-map>
-
     <mat-form-field class="create-post-form__field category">
       <mat-label>Choose category</mat-label>
       <mat-select [(ngModel)]="selectedCategory" name="categories">

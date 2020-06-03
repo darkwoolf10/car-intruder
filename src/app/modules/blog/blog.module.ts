@@ -7,7 +7,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {AgmCoreModule} from '@agm/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [ CreatePostComponent ],
@@ -19,7 +19,8 @@ import {FormsModule} from '@angular/forms';
         MatSelectModule,
         MatButtonModule,
         AgmCoreModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ]
 })
 

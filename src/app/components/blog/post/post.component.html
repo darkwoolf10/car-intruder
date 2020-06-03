@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="images">
+    <div class="images__item picture">
+      <mat-card>
+        <img class="post-image" [src]="post.image" alt="Photo">
+      </mat-card>
+    </div>
+    <div class="images__item map">
+      <mat-card>
+        <agm-map
+          [latitude]="lat"
+          [longitude]="lng"
+          [zoom]="9"
+        >
+          <agm-marker
+            [latitude]="marker.lat"
+            [longitude]="marker.lng"
+            [opacity]="marker.alpha"
+            [markerDraggable]="true"
+          >
+          </agm-marker>
+        </agm-map>
+      </mat-card>
+    </div>
+  </div>
+  <div class="info">
+    <mat-card class="info-field title">
+      <span class="info-field__title">title:</span>
+      {{ post.title }}
+    </mat-card>
+    <mat-card class="info-field content">
+      <span class="info-field__title">description:</span>
+      {{ post.description }}
+    </mat-card>
+    <mat-card class="info-field category">
+      <span class="info-field__title">category:</span>
+      {{ post.category }}
+    </mat-card>
+  </div>
+</div>

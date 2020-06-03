@@ -15,6 +15,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpClient.get<any>(environment.backendApi).subscribe(res => {
+      console.log(res.articles);
       this.posts = res.articles;
     });
   }

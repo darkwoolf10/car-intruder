@@ -14,7 +14,10 @@ export class PostService {
 
   public createPost(post: any) {
     return this.httpClient.post(environment.backendApi + this.createPostPath, post)
-      .subscribe(response => response);
+      .subscribe(response => {
+        console.log(response);
+        return response;
+      });
   }
 
   public getAllPosts() {

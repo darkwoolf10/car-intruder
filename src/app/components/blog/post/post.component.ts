@@ -10,16 +10,24 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./post.component.sass']
 })
 export class PostComponent implements OnInit {
+  lat = 49.444431;
+  lng = 32.059769;
+  marker = {lat: 49.444431, lng: 32.059769, alpha: 0.4};
   private id: number;
-  public post: object;
+  public post = {
+    title: '',
+    description: '',
+    category: '',
+    image: ''
+  };
 
   constructor(private httpClient: HttpClient, private activateRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.id = this.activateRoute.snapshot.params.id;
     this.httpClient.get<any>(environment.backendApi + 'articles/' + this.id).subscribe(res => {
-      console.log(res);
-      this.post = res;
+      console.log(res.article);
+      this.post = res.article;
     });
   }
 
