@@ -19,6 +19,7 @@ import { environment } from '../environments/environment.prod';
 import { MatCardModule } from '@angular/material/card';
 import { PostComponent } from './components/blog/post/post.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegistrationComponent,
     ListComponent,
     EditPostComponent,
-    PostComponent
+    PostComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

@@ -13,12 +13,12 @@ export class AppComponent {
 
   public headerLinks = [
     {
-      title: 'Blog',
-      link: '/blog/list'
+      title: 'Map',
+      link: '/map'
     },
     {
-      title: 'Create post',
-      link: '/blog/create-post'
+      title: 'Blog',
+      link: '/blog/list'
     }
   ];
 }

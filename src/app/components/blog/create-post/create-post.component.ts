@@ -3,6 +3,7 @@ import { PostService } from '../../../services/api/post.service';
 import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+import { environment } from '../../../../environments/environment.prod';
 
 @Component({
   selector: 'app-create-post',
@@ -20,8 +21,8 @@ export class CreatePostComponent {
     {name: 'auto_violation', title: 'Auto violation'}
   ] as const;
   public files: any[];
-  lat = 49.444431;
-  lng = 32.059769;
+  lat = environment.defaultLat;
+  lng = environment.defaultLng;
   marker = {lat: 49.444431, lng: 32.059769, alpha: 0.4};
   constructor(private postService: PostService,
               @Inject(DOCUMENT) private document: Document,

@@ -6,6 +6,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { RegistrationComponent } from './components/auth/registration/registration.component';
 import { ListComponent } from './components/blog/list/list.component';
 import { PostComponent } from './components/blog/post/post.component';
+import { MapComponent } from './components/map/map.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'blog/list', component: ListComponent },
   { path: 'blog/:id', component: PostComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'registration', component: RegistrationComponent}
+  { path: 'registration', component: RegistrationComponent},
+  { path: 'map', component: MapComponent}
 ];
 
 @NgModule({
